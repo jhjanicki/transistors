@@ -79,5 +79,22 @@ summary(linearReg)
 # Multiple R-squared:  0.1774,	Adjusted R-squared:  0.174 
 # F-statistic: 51.97 on 1 and 241 DF,  p-value: 0.000000000007213
 
+# Exponential Regression
+df_transistors_cleaned$log_transistors <- log(df_transistors_cleaned$transistor_count)
+exponential_model <- lm(year ~ log_transistors, data = df_transistors_cleaned)
+summary(exponential_model)
 
-
+# Residuals:
+#     Min      1Q  Median      3Q     Max 
+# -14.658  -2.142  -0.450   1.373  42.701 
+# 
+# Coefficients:
+#                   Estimate Std. Error t value            Pr(>|t|)    
+# (Intercept)     1953.26222    1.06522 1833.66 <0.0000000000000002 ***
+# log_transistors    2.79878    0.05599   49.99 <0.0000000000000002 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Residual standard error: 4.419 on 241 degrees of freedom
+# Multiple R-squared:  0.912,	Adjusted R-squared:  0.9117 
+# F-statistic:  2499 on 1 and 241 DF,  p-value: < 0.00000000000000022
